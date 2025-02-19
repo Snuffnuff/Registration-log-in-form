@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('image.jpg') no-repeat center center/cover;
+            margin: 0;
+            color: #333;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select, button {
+            margin: 0.5rem 0;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        button {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+        }
+
+        .success-message {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: rgb(0, 94, 128);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="registration-form">
+            <h2>Registration Form</h2>
+            <form id="regForm">
+                <input type="text" id="studentName" placeholder="Name of Student" required>
+                <input type="text" id="parentName" placeholder="Name of Parents" required>
+                <input type="tel" id="contactNumber" placeholder="Contact Number" required>
+                <input type="date" id="birthday" required>
+                <input type="number" id="year" placeholder="Year" required>
+                <input type="number" id="age" placeholder="Age" required>
+                <select id="strand" required>
+                    <option value="" disabled selected>Select Year and Strand</option>
+                    <option value="STEM">STEM</option>
+                    <option value="ABM">ABM</option>
+                    <option value="HUMSS">HUMSS</option>
+                    <option value="ICT">ICT</option>
+                </select>
+                <button type="button" onclick="showLoginForm()">Next</button>
+            </form>
+        </div>
+
+        <div id="login-form" style="display:none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="button" onclick="login()">Log In</button>
+                <div class="success-message">🎉 Login Successful! 🎉</div>
+            </form>
+        </div>
+
+        <div id="success-message" style="display:none; text-align: left;">
+            <h3>📢 Enrollment Information</h3>
+            <p><strong>Dear Students,</strong></p>
+            <p>Thank you for successfully registering online at Arellano University - MALABON Elisa Esguerra Campus for the SY 2025-2026!</p>
+            <p>To complete your enrollment, please proceed to the Registration Office to submit the following required documents:</p>
+            <ul>
+                <li>📜 PSA Birth Certificate</li>
+                <li>📄 Grade 10 Card</li>
+                <li>📂 Form 137</li>
+            </ul>
+            <p><strong>📆 Available Schedule:</strong></p>
+            <p>Monday to Friday, 9:00 AM - 4:00 PM</p>
+            <p><strong>📅 Deadline for submission:</strong> June 20, 2025</p>
+            <p><strong>📍 Location:</strong></p>
+            <p>Registration Office, Arellano University - MALABON Elisa Esguerra Campus</p>
+            <p>Gen. Luna St., Brgy. Bayan-Bayanan, Malabon City</p>
+            <p>📞 Contact: (02) 555-1234</p>
+            <p>📧 Email: <a href="mailto:registration@arellanomalabon.edu.ph">registration@arellanomalabon.edu.ph</a></p>
+            <p>We look forward to welcoming you!</p>
+            <p>– Admin, Arellano University - MALABON Elisa Esguerra Campus</p>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm() {
+            const form = document.getElementById('regForm');
+            if (form.checkValidity()) {
+                document.getElementById('registration-form').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+            } else {
+                alert('Please fill out all fields correctly.');
+            }
+        }
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (email && password) {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            } else {
+                alert('Please enter a valid email and password.');
+            }
+        }
+    </script>
+</body>
+</html>
